@@ -41,16 +41,6 @@ if st.button("Summarize"):
 
 
 
-
-
-
-
-
-
-
-
-
-
 #static prompt and dynamic prompt
 #prompt=f"Summarize the following research paper abstract in a concise manner:" + {user_input}"
 #dynamic prompt example
