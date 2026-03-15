@@ -14,8 +14,6 @@ style_input = st.selectbox( "Select Explanation Style", ["Beginner-Friendly", "T
 
 length_input = st.selectbox( "Select Explanation Length", ["Short (1-2 paragraphs)", "Medium (3-5 paragraphs)", "Long (detailed explanation)"] )
 
-from langchain_core.prompts import PromptTemplate
-
 template = load_prompt("template.json")
 
 # # prompt=template.invoke({'paper_input':paper_input, 
