@@ -1,0 +1,16 @@
+LangChain introduced Runnables to make it easier to connect different components such as prompts, models, retrievers, and output parsers. Earlier, building applications often meant creating separate chains for different tasks, which could make the code base heavier to manage and more difficult for beginners to understand. Runnables solve this by giving components a common interface, so they can work together in a more uniform way. In LangChain, many components can be called with methods like invoke(), and they can also be connected into pipelines or sequences more easily.
+
+In simple words, a Runnable is like a standard rule or wrapper that says, “Every component should know how to take an input and return an output in a consistent way.” Because of this, one component’s output can easily become the next component’s input. This makes LangChain applications cleaner, more reusable, and much easier to build. For example, a prompt can pass its output to a model, then the model’s output can go to an output parser, all in one smooth flow. LangChain’s docs show this same idea with .invoke(...) and runnable sequences/pipelines.
+
+A small correction to your original idea: it is better to say that Runnables are a common abstraction/interface rather than strictly “an abstract class.” The important point is that they standardize how components are executed and connected. That is why Runnables are such an important concept in LangChain.
+
+
+There are basically two types of runnable :
+1.) Task Speciifc Runnables
+2.) Runnables Primitives
+
+In LangChain, we can think of Runnables in two broad groups. The first group is task-specific runnables. These are components made to do one particular job. For example, ChatOpenAI is used to generate responses from a model, PromptTemplate is used to create structured prompts, and retrievers are used to fetch relevant information. Each of these components is designed for its own specific purpose, but they all follow LangChain’s common Runnable interface, which makes them easier to use together. LangChain describes this as a unified Runnable interface that many modules implement, allowing components to be chained smoothly.
+
+The second group is runnable primitives. These are not mainly for doing one business task by themselves; instead, they help in connecting and controlling other runnables. For example, RunnableSequence is used when you want components to run one after another, RunnableParallel is used when you want multiple runnables to run at the same time, RunnableBranch is used when different conditions decide which path to follow, and RunnableLambda is used to wrap custom Python logic inside the runnable system. These primitives make workflows more flexible and reduce the need for writing large, complicated chain code manually.
+
+So in simple language, task-specific runnables do the actual work, while runnable primitives help organize and connect that work. Because both follow the same runnable style, LangChain applications become easier to build, easier to read, and easier to maintain. Instead of creating many separate custom chains, developers can combine small reusable components in a clean and standard way.

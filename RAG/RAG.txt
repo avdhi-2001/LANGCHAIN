@@ -1,0 +1,34 @@
+LLMs have one major limitation: they are usually trained on past data, so they may not know about recent news, current events, or new information. They also do not automatically know your personal data or private company documents, because that information is not part of their training.
+
+To solve this problem, we can connect the LLM to an external knowledge source, such as company documents, PDFs, databases, or personal files. This overall approach is called RAG, which stands for Retrieval-Augmented Generation.
+
+In simple words, RAG helps the model first find relevant information from an external source and then use that information to generate a better answer.
+
+The basic RAG pipeline is often explained using these main components:
+
+1.) Document Loaders
+They are components in langchain used to load data from different sources such as PDFs, text files, websites, or databases and convert it in standardize format.
+The document loaders are of many types in CSV mojorly we will be studying TextLoader, PyPDFLoader, WebBaseLoader, CSVLoader.
+
+The basic structure in which the data is laodated is:
+
+Document= {'page content':......,
+'metadata': name of file etccc
+}
+
+2.) Text Splitters
+Since documents can be very large, they are broken into smaller chunks so the model can process them more easily.
+
+3.) Vector Databases
+These store the document chunks in a special numerical form so that similar information can be searched quickly.
+
+4.) Retrievers
+These find the most relevant chunks from the vector database based on the user’s question.
+
+After retrieval, the selected information is passed to the LLM, and then the LLM generates the final answer using that retrieved context.
+
+One extra point: in many practical RAG systems, embeddings are also very important. Embeddings convert text into vectors before storing them in the vector database. So, in practice, embeddings are also a key part of the RAG pipeline.
+
+A simple way to think about RAG is:
+
+User question → search external knowledge → retrieve relevant information → send it to LLM → generate answer
